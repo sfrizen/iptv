@@ -1,6 +1,6 @@
-package iptv.web;
+package me.fsv.iptv.web;
 
-import iptv.model.Channel;
+import me.fsv.iptv.model.Channel;
 import org.primefaces.model.TreeNode;
 
 import javax.annotation.ManagedBean;

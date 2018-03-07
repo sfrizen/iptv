@@ -1,4 +1,4 @@
-package iptv;
+package me.fsv.iptv;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

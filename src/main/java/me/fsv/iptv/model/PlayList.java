@@ -1,4 +1,4 @@
-package iptv.model;
+package me.fsv.iptv.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

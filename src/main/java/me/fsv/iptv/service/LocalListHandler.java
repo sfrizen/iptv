@@ -1,10 +1,10 @@
-package iptv.service;
+package me.fsv.iptv.service;
 
-import iptv.dao.ChannelRepository;
-import iptv.dao.GroupRepository;
-import iptv.model.Channel;
-import iptv.model.ChannelAction;
-import iptv.model.Group;
+import me.fsv.iptv.dao.ChannelRepository;
+import me.fsv.iptv.dao.GroupRepository;
+import me.fsv.iptv.model.Channel;
+import me.fsv.iptv.model.ChannelAction;
+import me.fsv.iptv.model.Group;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package iptv.model;
+package me.fsv.iptv.model;
 
 public class ChannelAction {
 

@@ -1,7 +1,7 @@
-package iptv.service;
+package me.fsv.iptv.service;
 
-import iptv.model.Channel;
-import iptv.model.ChannelAction;
+import me.fsv.iptv.model.Channel;
+import me.fsv.iptv.model.ChannelAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

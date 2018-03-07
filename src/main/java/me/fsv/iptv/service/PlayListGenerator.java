@@ -1,9 +1,9 @@
-package iptv.service;
+package me.fsv.iptv.service;
 
-import iptv.dao.PlayListRepository;
-import iptv.model.Channel;
-import iptv.model.Group;
-import iptv.model.PlayList;
+import me.fsv.iptv.dao.PlayListRepository;
+import me.fsv.iptv.model.Channel;
+import me.fsv.iptv.model.Group;
+import me.fsv.iptv.model.PlayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

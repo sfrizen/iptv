@@ -1,6 +1,6 @@
-package iptv.web;
+package me.fsv.iptv.web;
 
-import iptv.service.PlayListGenerator;
+import me.fsv.iptv.service.PlayListGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;

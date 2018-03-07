@@ -1,8 +1,7 @@
-package iptv.dao;
+package me.fsv.iptv.dao;
 
-import iptv.model.Channel;
+import me.fsv.iptv.model.Channel;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.lang.Nullable;
 
 import java.util.List;
 

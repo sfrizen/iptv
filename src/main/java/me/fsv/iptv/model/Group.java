@@ -1,22 +1,21 @@
-package iptv.model;
+package me.fsv.iptv.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Channel {
+@Table(name = "ChannelsGroup")
+public class Group {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id")
-    @SequenceGenerator(name = "id", sequenceName = "channel_sequence")
+    @SequenceGenerator(name = "id", sequenceName = "group_sequence")
     private Long id;
     private Integer ord;
     private Boolean ignore = false;
-    private Integer code;
     private String name;
     private String newName;
-    private String url;
-    @ManyToOne
-    private Group group;
 
     public Long getId() {
         return id;
@@ -42,14 +41,6 @@ public class Channel {
         this.ignore = ignore;
     }
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
     public String getName() {
         return name;
     }
@@ -66,33 +57,14 @@ public class Channel {
         this.newName = newName;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
     @Override
     public String toString() {
-        return "Channel{" +
+        return "Group{" +
                 "id=" + id +
                 ", ord=" + ord +
                 ", ignore=" + ignore +
-                ", code=" + code +
                 ", name='" + name + '\'' +
                 ", newName='" + newName + '\'' +
-                ", url='" + url + '\'' +
-                ", group=" + group +
                 '}';
     }
 }

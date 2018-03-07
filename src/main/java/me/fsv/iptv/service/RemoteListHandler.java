@@ -1,6 +1,6 @@
-package iptv.service;
+package me.fsv.iptv.service;
 
-import iptv.model.Channel;
+import me.fsv.iptv.model.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
