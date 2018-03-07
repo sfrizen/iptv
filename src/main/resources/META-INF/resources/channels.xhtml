@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<x:html xmlns="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/xml/ns/javaee"
+      xmlns:x="http://www.w3.org/1999/xhtml">
+
+<head>
+    <x:title>Channels</x:title>
+</head>
+
+<body>
+    <form id="form">
+        <p:treeTable value="#{channelsView.root}" var="channel">
+            <p:column headerText="Name">
+                <outputText value="#{channel.code}"/>
+            </p:column>
+            <p:column headerText="Size">
+                <outputText value="#{channel.name}"/>
+            </p:column>
+            <p:column headerText="Type">
+                <outputText value="#{channel.url}"/>
+            </p:column>
+            <p:column style="width:24px">
+                <p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()" title="View Detail"
+                               styleClass="ui-icon ui-icon-search">
+                    <f:setPropertyActionListener value="#{channel}" target="#{channelsView.selectedChannel}"/>
+                </p:commandLink>
+            </p:column>
+        </p:treeTable>
+
+        <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true"
+                  resizable="false">
+            <p:outputPanel id="documentPanel">
+                <p:panelGrid columns="2" columnClasses="label,value"
+                             rendered="#{not empty channelsView.selectedChannel}">
+                    <outputLabel for="name" value="Name: "/>
+                    <outputText id="name" value="#{channelsView.selectedChannel.code}" style="font-weight:bold"/>
+
+                    <outputLabel for="size" value="Size: "/>
+                    <outputText id="size" value="#{channelsView.selectedChannel.name}" style="font-weight:bold"/>
+
+                    <outputLabel for="type" value="Type "/>
+                    <outputText id="type" value="#{channelsView.selectedChannel.url}" style="font-weight:bold"/>
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:dialog>
+    </form>
+</body>
+
+</x:html>
