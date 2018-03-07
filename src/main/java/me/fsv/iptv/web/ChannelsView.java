@@ -2,16 +2,37 @@ package me.fsv.iptv.web;
 
 import me.fsv.iptv.model.Channel;
 import org.primefaces.model.TreeNode;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import java.util.List;
 
 @ManagedBean
+@ViewScoped
 public class ChannelsView {
 
-    private TreeNode root;
+    @Autowired
+    private ChannelsViewDataProvider channelsViewDataProvider;
+
+    private TreeNode groups;
     private List<Channel> channels;
     private Channel selectedChannel;
+
+    @PostConstruct
+    private void init() {
+        groups = channelsViewDataProvider.getGroups();
+        channels = channelsViewDataProvider.getChannels();
+    }
+
+    public TreeNode getGroups() {
+        return groups;
+    }
+
+    public void setGroups(TreeNode groups) {
+        this.groups = groups;
+    }
 
     public List<Channel> getChannels() {
         return channels;
@@ -19,14 +40,6 @@ public class ChannelsView {
 
     public void setChannels(List<Channel> channels) {
         this.channels = channels;
-    }
-
-    public TreeNode getRoot() {
-        return root;
-    }
-
-    public void setRoot(TreeNode root) {
-        this.root = root;
     }
 
     public Channel getSelectedChannel() {
