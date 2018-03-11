@@ -16,22 +16,21 @@ public class ChannelsView {
     @Autowired
     private ChannelsViewDataProvider channelsViewDataProvider;
 
-    private TreeNode groups;
+    private TreeNode nodes;
     private List<Channel> channels;
     private Channel selectedChannel;
 
     @PostConstruct
     private void init() {
-        groups = channelsViewDataProvider.getGroups();
-        channels = channelsViewDataProvider.getChannels();
+        nodes = channelsViewDataProvider.getNodes();
     }
 
-    public TreeNode getGroups() {
-        return groups;
+    public TreeNode getNodes() {
+        return nodes;
     }
 
-    public void setGroups(TreeNode groups) {
-        this.groups = groups;
+    public void setNodes(TreeNode nodes) {
+        this.nodes = nodes;
     }
 
     public List<Channel> getChannels() {
