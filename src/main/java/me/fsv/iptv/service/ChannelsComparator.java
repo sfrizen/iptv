@@ -19,10 +19,10 @@ public class ChannelsComparator {
     public List<ChannelAction> compare(List<Channel> localChannels, List<Channel> remoteChannels) {
         List<ChannelAction> channelActions = new ArrayList<>();
         localChannels.addAll(remoteChannels);
-        Map<String, List<Channel>> grouppedChannels = localChannels.stream()
-                .collect(Collectors.groupingBy(Channel::getName));
+        Map<Integer, List<Channel>> groupedChannels = localChannels.stream()
+                .collect(Collectors.groupingBy(Channel::getCode));
 
-        grouppedChannels.forEach((name, channels) -> {
+        groupedChannels.forEach((name, channels) -> {
             if (channels.size() == 1) {
                 if (channels.get(0).getId() == null) {
                     //added
@@ -50,7 +50,7 @@ public class ChannelsComparator {
                 LOG.error("Not 1 or 2 equal channels {}", channels);
             }
         });
-        LOG.info("Channels to be updated ({}): {}", channelActions.size(), channelActions);
+        LOG.info("Channels to be updated: {}", channelActions.size());
         return channelActions;
     }
 

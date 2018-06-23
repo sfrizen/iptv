@@ -32,7 +32,7 @@ public class PlayListGenerator {
                 .forEach(group -> channels.stream()
                         .filter(channel -> channel.getGroup().getId().equals(group.getId()))
                         .filter(channel -> !channel.getIgnore())
-                        .sorted(Comparator.comparingInt(Channel::getOrd))
+                        .sorted(Comparator.comparing(ch -> ch.getName()))
                         .forEach(channel -> res.append("#EXTINF:0,")
                                 .append(channel.getNewName() != null ? channel.getNewName() : channel.getName())
                                 .append("\n")

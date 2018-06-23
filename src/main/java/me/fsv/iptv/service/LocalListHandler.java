@@ -53,23 +53,23 @@ public class LocalListHandler {
     }
 
     private void addChannel(Channel channel) {
-        LOG.info("addChannel: {}", channel);
+        LOG.warn("addChannel: {}", channel);
         checkGroup(channel);
         LOG.info("addChannel (after group check): {}", channel);
         channelRepository.save(channel);
     }
 
     private void deleteChannel(Channel channel) {
-        LOG.info("deleteChannel: {}", channel);
+        LOG.warn("deleteChannel: {}", channel);
         channelRepository.delete(channel);
     }
 
     private void updateChannel(Channel channel) {
-        LOG.info("updateChannel: {}", channel);
+        LOG.warn("updateChannel: {}", channel);
         checkGroup(channel);
         LOG.info("updateChannel (after group check): {}", channel);
         channelRepository.findById(channel.getId()).ifPresent(localChannel -> {
-            localChannel.setCode(channel.getCode());
+            localChannel.setName(channel.getName());
             channelRepository.save(channel);
         });
     }
@@ -78,7 +78,7 @@ public class LocalListHandler {
         Group group = channel.getGroup();
         Group groupInDb = groupRepository.findByName(group.getName());
         if (groupInDb == null) {
-            LOG.info("checkGroup (save new): {}", group);
+            LOG.warn("checkGroup (save new): {}", group);
             channel.setGroup(groupRepository.save(group));
         } else {
             channel.setGroup(groupInDb);
