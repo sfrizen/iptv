@@ -4,6 +4,7 @@ import me.fsv.iptv.model.Channel;
 import me.fsv.iptv.model.ChannelAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MarkerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +23,13 @@ public class Updater {
     private ChannelsComparator channelsComparator;
 
     public void update() {
-        LOG.warn("Starting updater {}", LocalDateTime.now());
+        LOG.info(MarkerFactory.getMarker("email"), "Starting updater {}", LocalDateTime.now());
         List<Channel> remoteChannels = remoteListHandler.getChannels();
         if (remoteChannels.size() > 0) {
             List<Channel> localChannels = localListHandler.getChannels();
             List<ChannelAction> mergedChannels = channelsComparator.compare(localChannels, remoteChannels);
             localListHandler.update(mergedChannels);
         }
-        LOG.warn("Update finished {}", LocalDateTime.now());
+        LOG.info(MarkerFactory.getMarker("email"), "Update finished {}", LocalDateTime.now());
     }
 }

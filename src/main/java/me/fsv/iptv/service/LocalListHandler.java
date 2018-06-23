@@ -7,6 +7,7 @@ import me.fsv.iptv.model.ChannelAction;
 import me.fsv.iptv.model.Group;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MarkerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,19 +54,19 @@ public class LocalListHandler {
     }
 
     private void addChannel(Channel channel) {
-        LOG.warn("addChannel: {}", channel);
+        LOG.info(MarkerFactory.getMarker("email"), "addChannel: {}", channel);
         checkGroup(channel);
         LOG.info("addChannel (after group check): {}", channel);
         channelRepository.save(channel);
     }
 
     private void deleteChannel(Channel channel) {
-        LOG.warn("deleteChannel: {}", channel);
+        LOG.info(MarkerFactory.getMarker("email"), "deleteChannel: {}", channel);
         channelRepository.delete(channel);
     }
 
     private void updateChannel(Channel channel) {
-        LOG.warn("updateChannel: {}", channel);
+        LOG.info(MarkerFactory.getMarker("email"), "updateChannel: {}", channel);
         checkGroup(channel);
         LOG.info("updateChannel (after group check): {}", channel);
         channelRepository.findById(channel.getId()).ifPresent(localChannel -> {
@@ -78,7 +79,7 @@ public class LocalListHandler {
         Group group = channel.getGroup();
         Group groupInDb = groupRepository.findByName(group.getName());
         if (groupInDb == null) {
-            LOG.warn("checkGroup (save new): {}", group);
+            LOG.info(MarkerFactory.getMarker("email"), "checkGroup (save new): {}", group);
             channel.setGroup(groupRepository.save(group));
         } else {
             channel.setGroup(groupInDb);
