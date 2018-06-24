@@ -41,11 +41,6 @@ public class RemoteListHandler {
             e.printStackTrace();
         }
 
-//        try {
-//            scanner = new Scanner(new File("/Users/sfrizen/iptv/edem_pl.m3u8"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         LOG.info("Loaded remote list from {}: {}", REMOTE_LIST_URL, scanner);
         return playListParser.parse(scanner);
     }
